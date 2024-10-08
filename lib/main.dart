@@ -32,7 +32,7 @@ class _JankenPageState extends State<JankenPage> {
   String myhand = '👊';
   String computerHand = '👊';
   String result = '引き分け';
-  String final_result = 'どちらが勝つでしょうか';
+  String final_result = 'どっちが勝つかなぁ';
   int battletimes = 0;
   int winning_result = 0;
   int losing_result = 0;
@@ -60,7 +60,7 @@ class _JankenPageState extends State<JankenPage> {
     battletimes += 1;
     if (battletimes == 6) {
       recordReset();
-      battletimes = 1;
+      battletimes = 0;
     }
   }
 
@@ -84,7 +84,7 @@ class _JankenPageState extends State<JankenPage> {
 
   String battleRecordAnnouncement(int battletimes) {
     if (battletimes == 5) {
-      return '対戦結果は$winning_result-$losing_resultで引き分けは$draw_result回です';
+      return '対戦結果は$winning_result-$losing_resultで引き分けは$draw_result回だったな';
     } else
       return 'どっちが勝つかな';
   }
@@ -129,7 +129,7 @@ class _JankenPageState extends State<JankenPage> {
                   fontSize: 26,
                 )),
             SizedBox(height: 20),
-            Text('現在の対戦回数は$battletimes回です',
+            Text('現在の対戦回数は$battletimes回やでぇ',
                 style: TextStyle(
                   fontSize: 28,
                 )),
