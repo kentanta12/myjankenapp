@@ -43,9 +43,10 @@ class _JankenPageState extends State<JankenPage> {
     print(myhand);
     generateComputerHand();
     judge();
-    recordBattleTimes();
     recordResult();
+    recordBattleTimes();
     final_result = battleRecordAnnouncement(battletimes);
+    print(winning_result);
     setState(() {});
   }
 
@@ -58,7 +59,8 @@ class _JankenPageState extends State<JankenPage> {
   void recordBattleTimes() {
     battletimes += 1;
     if (battletimes == 6) {
-      battletimes = 0;
+      recordReset();
+      battletimes = 1;
     }
   }
 
@@ -66,21 +68,18 @@ class _JankenPageState extends State<JankenPage> {
     if (result == '勝ち') {
       winning_result += 1;
     }
-    if (winning_result == 6) {
-      winning_result == 0;
-    }
     if (result == '負け') {
       losing_result += 1;
-    }
-    if (losing_result == 6) {
-      losing_result == 0;
     }
     if (result == '引き分け') {
       draw_result += 1;
     }
-    if (draw_result == 6) {
-      draw_result == 0;
-    }
+  }
+
+  void recordReset() {
+    losing_result = 0;
+    draw_result = 0;
+    winning_result = 0;
   }
 
   String battleRecordAnnouncement(int battletimes) {
@@ -94,7 +93,7 @@ class _JankenPageState extends State<JankenPage> {
     switch (randomNumber) {
       case 0:
         return '👊';
-        case1:
+      case 1:
         return '✌️';
       case 2:
         return '✋';
